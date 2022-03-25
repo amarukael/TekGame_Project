@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using static GameManager;
 
 public class PlayerActive : MonoBehaviour
 {
@@ -54,7 +55,3 @@ public class PlayerActive : MonoBehaviour
     }
 }
 
-public enum UnitState
-{
-    Idle, Move, Attack, Cast, Dead,
-}
