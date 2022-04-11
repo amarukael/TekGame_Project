@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 4566011759925617097}
   m_Layer: 0
   m_Name: DamagedCreep
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -351,11 +351,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
   State: 0
-  Creep: 0
+  Creep: 1
   IsAlive: 0
   IsFoward: 1
-  MoveSpeed: 1.5
   HealthPoint: 200
+  MoveSpeed: 1
   AtkSpeed: 3
 --- !u!1 &5543600132594166680
 GameObject:

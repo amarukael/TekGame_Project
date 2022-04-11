@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using static GameManager;
+﻿using System;
+using UnityEngine;
 
 public class EnemyActive : MonoBehaviour
 {
@@ -9,19 +9,13 @@ public class EnemyActive : MonoBehaviour
 
     public bool IsAlive;
     public bool IsFoward;
-    public float MoveSpeed;
     public float HealthPoint;
+    public float MoveSpeed;
     public float AtkSpeed;
 
     private Animator enemyAnim;
     private AudioSource enemyAudio;
     private float attackTime;
-
-    private void Enemy_Stance()
-    {
-        enemyAnim.SetBool("IsMoving", false);
-        State = UnitState.Idle;
-    }
 
     private void Enemy_Attack()
     {
@@ -45,6 +39,45 @@ public class EnemyActive : MonoBehaviour
         }
     }
 
+    private void OnDisable()
+    {
+        if (!gameObject.scene.isLoaded) return;
+        var gm = GameManager.Instance;
+        switch (Creep)
+        {
+            case EnemySet.Damaged:
+                var vfx_fire1 = Instantiate(gm.Origin_Fire1, transform.position, Quaternion.identity);
+                Destroy(vfx_fire1, 1f);
+                gm.KillPoint++;
+                break;
+            case EnemySet.Native:
+                Instantiate(gm.Origin_DamagedCreep, transform.position, Quaternion.identity);
+                gm.GamePoint += 5;
+                break;
+            case EnemySet.Warrior:
+                Instantiate(gm.Origin_NativeCreep, transform.position, Quaternion.identity);
+                gm.GamePoint += 30;
+                break;
+            case EnemySet.Witch:
+                Instantiate(gm.Origin_DamagedCreep, transform.position, Quaternion.identity);
+                gm.GamePoint += 15;
+                break;
+            case EnemySet.Skeleton:
+                var vfx_fire2 = Instantiate(gm.Origin_Fire2, transform.position, Quaternion.identity);
+                Destroy(vfx_fire2, 1f);
+                gm.GamePoint += 5;
+                break;
+        }
+    }
+
+
+    private void Enemy_Stance(Action attack = null)
+    {
+        enemyAnim.SetBool("IsMoving", false);
+        State = UnitState.Idle;
+        attack?.Invoke();
+    }
+
     private void Enemy_Movement(bool isFoward)
     {
         var movetoward = Vector3.MoveTowards(transform.position, Target.position,
@@ -61,6 +94,25 @@ public class EnemyActive : MonoBehaviour
         }
         enemyAnim.SetBool("IsMoving", true);
         State = UnitState.Move;
+    }
+
+    private void Enemy_Death()
+    {
+        if (HealthPoint <= 0)
+        {
+            IsAlive = false;
+            HealthPoint = 0;
+            State = UnitState.Dead;
+            if (Creep == EnemySet.Skeleton)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                enemyAnim.SetTrigger("Falling");
+                Destroy(gameObject, 3f);
+            }
+        }
     }
 
     private void ChangeDirection(Vector2 direction, bool isFoward)
@@ -83,29 +135,17 @@ public class EnemyActive : MonoBehaviour
         enemyAnim.SetFloat("AxisY", vector.y);
     }
 
+    private Vector3 RandomPosition(Vector3 basepos)
+    {
+        float x = UnityEngine.Random.Range(-1f, 1f);
+        float y = UnityEngine.Random.Range(-1f, 1f);
+        var rand = basepos + new Vector3(x, y);
+        return rand;
+    }
     private void Awake()
     {
         enemyAnim = GetComponent<Animator>();
         enemyAudio = GetComponent<AudioSource>();
-    }
-
-    private void Enemy_Death()
-    {
-        if (HealthPoint <= 0)
-        {
-            IsAlive = false;
-            HealthPoint = 0;
-            State = UnitState.Dead;
-            if (Creep == EnemySet.Skeleton)
-            {
-                Destroy(gameObject);
-            }
-            else
-            {
-                enemyAnim.SetTrigger("Falling");
-                Destroy(gameObject, 3f);
-            }
-        }
     }
 
     private void FixedUpdate()
@@ -116,7 +156,7 @@ public class EnemyActive : MonoBehaviour
             var distance = Vector3.Distance(transform.position, Target.position);
             if (distance < 1.5f && IsFoward)
             {
-                Enemy_Stance();
+                Enemy_Stance(Enemy_Attack);
             }
             else
             {
@@ -128,7 +168,7 @@ public class EnemyActive : MonoBehaviour
                 {
                     if (distance < 6f)
                     {
-                        Enemy_Stance();
+                        Enemy_Stance(Enemy_Attack);
                     }
                     if (distance < 5f)
                     {
@@ -140,8 +180,20 @@ public class EnemyActive : MonoBehaviour
                     }
                 }
             }
-
-            Enemy_Death();
         }
+
+        if (attackTime > 0f)
+        {
+            attackTime -= Time.fixedDeltaTime;
+            State = UnitState.Attack;
+        }
+
+        if (attackTime < 0f)
+        {
+            attackTime = 0f;
+            State = UnitState.Idle;
+        }
+
+        Enemy_Death();
     }
 }

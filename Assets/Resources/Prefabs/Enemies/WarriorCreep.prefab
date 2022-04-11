@@ -246,7 +246,7 @@ GameObject:
   - component: {fileID: 8306560013427236025}
   m_Layer: 0
   m_Name: WarriorCreep
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -522,9 +522,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
   State: 0
-  Creep: 0
+  Creep: 3
   IsAlive: 0
   IsFoward: 1
-  MoveSpeed: 1.5
   HealthPoint: 500
+  MoveSpeed: 1.5
   AtkSpeed: 2

@@ -193,9 +193,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
   State: 0
-  Creep: 0
+  Creep: 4
   IsAlive: 0
   IsFoward: 0
   MoveSpeed: 1
   HealthPoint: 150
-  AtkSpeed: 2
+  AtkSpeed: 5
