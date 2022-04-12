@@ -20,6 +20,40 @@ public class GameManager : MonoBehaviour
 
     public int GamePoint;
     public int KillPoint;
+    public int Item_Elixir
+    {
+        get
+        {
+            return itemElixir;
+        }
+        set
+        {
+            itemElixir = value;
+            if (itemElixir > 99)
+            {
+                itemElixir = 99;
+            }
+        }
+    }
+
+    public int Item_Scroll
+    {
+        get
+        {
+            return itemScroll;
+        }
+        set
+        {
+            itemScroll = value;
+            if (itemScroll > 99)
+            {
+                itemScroll = 99;
+            }
+        }
+    }
+
+    [SerializeField] private int itemElixir;
+    [SerializeField] private int itemScroll;
 
     public static GameManager Instance { get; private set; }
 
@@ -48,4 +82,16 @@ public enum DamageState
     Default,
     PlayerPhs, PlayerMag,
     EnemyPhs, AllyHeal,
+}
+
+public enum ItemSet
+{
+/*    Default,
+    GreenOre, RedStone, BlueCrystal,
+    Lumber, CrudeOil, MagicCoal, MagicPowder, GoldBar,
+    Elixir, Scroll,*/
+
+    Default,
+    Power_Green, Power_Red, Power_Blue,
+    Item_Elixir, Item_Scroll,
 }

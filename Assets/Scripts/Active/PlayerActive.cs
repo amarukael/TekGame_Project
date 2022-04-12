@@ -173,22 +173,24 @@ public class PlayerActive : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                if (MagicPoint.CurrentPoint >= 50)
+                if (gm.Item_Scroll > 0 && MagicPoint.CurrentPoint >= 50)
                 {
                     StartCoroutine(Player_Attack(SkillSet.DemonShell, () => {
                         var shell = Instantiate(gm.Origin_Shell, transform);
+                        gm.Item_Scroll--;
                         Destroy(shell, 10f);
                     }));
                 }
             }
             else if (Input.GetKeyDown(KeyCode.Alpha3))
             {
-                if (HealthPoint.CurrentPoint < HealthPoint.MaximumPoint && CastTime[2] == 0)
+                if (gm.Item_Elixir > 0 && HealthPoint.CurrentPoint < HealthPoint.MaximumPoint && CastTime[2] == 0)
                 {
                     var effect = Instantiate(gm.Origin_CastLight, transform);
                     Destroy(effect, 1f);
 
                     HealthPoint.CurrentStock += 100;
+                    gm.Item_Elixir--;
                     DamageActive.PopupDamage(gm.Origin_Damage,
                                              transform.position, 100,
                                              DamageState.AllyHeal);

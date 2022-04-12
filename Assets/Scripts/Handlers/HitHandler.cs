@@ -34,7 +34,7 @@ public class HitHandler : MonoBehaviour
                     var player = transform.parent.GetComponent<PlayerActive>();
                     if (player)
                     {
-                        player.StaminaPoint.CurrentPoint += 10;
+                        player.StaminaPoint.CurrentStock += 10;
                     }
                 }
                 count++;
