@@ -13,22 +13,22 @@ public class ItemHandler : MonoBehaviour
         {
             var player = collision.GetComponent<PlayerActive>();
             switch (Item) {
-                case ItemSet.Power_Green:
+                case ItemSet.GreenOre:
                     player.HealthPoint.CurrentStock += 10;
                     DamageActive.PopupDamage(gm.Origin_Damage,
                                              transform.position, 10,
                                              DamageState.AllyHeal);
                     break;
-                case ItemSet.Power_Red:
+                case ItemSet.RedStone:
                     player.StaminaPoint.CurrentStock += 20;
                     break;
-                case ItemSet.Power_Blue:
+                case ItemSet.BlueCrystal:
                     player.MagicPoint.CurrentStock += 50;
                     break;
-                case ItemSet.Item_Elixir:
+                case ItemSet.Elixir:
                     gm.Item_Elixir++;
                     break;
-                case ItemSet.Item_Scroll:
+                case ItemSet.Scroll:
                     gm.Item_Scroll++;
                     break;
             }

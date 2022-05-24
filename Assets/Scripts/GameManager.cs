@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,8 +19,10 @@ public class GameManager : MonoBehaviour
     public GameObject Origin_Red => Resources.Load<GameObject>("Prefabs/PowerUps/Power_Red");
     public GameObject Origin_Blue => Resources.Load<GameObject>("Prefabs/PowerUps/Power_Blue");
 
+    public LevelSet LevelPoint;
     public int GamePoint;
     public int KillPoint;
+
     public int Item_Elixir
     {
         get
@@ -52,19 +55,71 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public static GameManager Instance { get; private set; }
+
     [SerializeField] private int itemElixir;
     [SerializeField] private int itemScroll;
-
-    public static GameManager Instance { get; private set; }
 
     private void Start()
     {
         Instance = this;
     }
 }
+
+[Serializable]
+public class ItemCollection
+{
+    public const int MAX_ITEM = 999;
+
+    public ItemSet Uid;
+    public string Name;
+    public string Description;
+    public int Amount;
+    public bool IsStack;
+
+    public int Stock
+    {
+        get
+        {
+            return Amount;
+        }
+        set
+        {
+            Amount = value;
+            if (Amount > MAX_ITEM)
+            {
+                Amount = MAX_ITEM;
+            }
+            else if (Amount < 0)
+            {
+                Amount = 0;
+            }
+        }
+    }
+
+    public static ItemCollection operator +(ItemCollection a, int b)
+    {
+        a.Stock = a.Amount + b;
+        return a;
+    }
+
+    public static ItemCollection operator -(ItemCollection a, int b)
+    {
+        a.Stock = a.Amount - b;
+        return a;
+    }
+}
+
 public enum UnitState
 {
     Idle, Move, Attack, Cast, Dead,
+}
+
+public enum DamageState
+{
+    Default,
+    PlayerPhs, PlayerMag,
+    EnemyPhs, AllyHeal,
 }
 
 public enum EnemySet
@@ -77,21 +132,15 @@ public enum SkillSet
     Default, SplashSwing, DemonShell,
 }
 
-public enum DamageState
-{
-    Default,
-    PlayerPhs, PlayerMag,
-    EnemyPhs, AllyHeal,
-}
-
 public enum ItemSet
 {
-/*    Default,
+    Default,
     GreenOre, RedStone, BlueCrystal,
     Lumber, CrudeOil, MagicCoal, MagicPowder, GoldBar,
-    Elixir, Scroll,*/
+    Elixir, Scroll,
+}
 
-    Default,
-    Power_Green, Power_Red, Power_Blue,
-    Item_Elixir, Item_Scroll,
+public enum LevelSet
+{
+    Default, Easy, Normal, Hard,
 }
