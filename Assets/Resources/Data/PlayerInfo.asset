@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: added76b8d2e86f47a2b78562a3a805b, type: 3}
+  m_Name: PlayerInfo
+  m_EditorClassIdentifier: 
+  HealthPoint:
+    CurrentPoint: 0
+    MaximumPoint: 0
+  MagicPoint:
+    CurrentPoint: 0
+    MaximumPoint: 0
+  StaminaPoint:
+    CurrentPoint: 0
+    MaximumPoint: 0
+  MoveSpeed: 0
+  AtkSpeed: 0
+  LevelPoint: 0
+  KillPoint: 0
+  GamePoint: 0
+  Item_GreenOre:
+    Uid: 1
+    Name: Green Ore
+    Description: Material from creep
+    Amount: 30
+    IsStack: 0
+  Item_RedStone:
+    Uid: 2
+    Name: Red Stone
+    Description: Material from elite creep
+    Amount: 30
+    IsStack: 0
+  Item_BlueCrystal:
+    Uid: 3
+    Name: Blue Crystal
+    Description: Material from magic creep
+    Amount: 30
+    IsStack: 0
+  Item_GoldBar:
+    Uid: 8
+    Name: Gold bar
+    Description: Expensive alloy made from coin
+    Amount: 30
+    IsStack: 0
+  Item_Lumber:
+    Uid: 4
+    Name: Lumber
+    Description: Raw material for crafting
+    Amount: 30
+    IsStack: 0
+  Item_CrudeOil:
+    Uid: 5
+    Name: Crude Oil
+    Description: Raw material for crafting
+    Amount: 30
+    IsStack: 0
+  Item_MagicCoal:
+    Uid: 6
+    Name: Magic Coal
+    Description: Magic material for crafting
+    Amount: 30
+    IsStack: 0
+  Item_MagicPowder:
+    Uid: 7
+    Name: Magic Powder
+    Description: Magic material for crafting
+    Amount: 30
+    IsStack: 0
+  Item_Elixir:
+    Uid: 9
+    Name: Elixir of Life
+    Description: Can restore 100 pts HP
+    Amount: 30
+    IsStack: 0
+  Item_Scroll:
+    Uid: 10
+    Name: Scroll of Guard
+    Description: Can prevent any damage from creep
+    Amount: 30
+    IsStack: 0

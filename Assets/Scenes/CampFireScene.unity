@@ -3102,8 +3102,8 @@ GameObject:
   - component: {fileID: 1424170557310003472}
   - component: {fileID: 1424170557310003478}
   - component: {fileID: 1424170557310003479}
+  - component: {fileID: 1424170557310003474}
   - component: {fileID: 1424170557310003476}
-  - component: {fileID: 1424170557310003477}
   m_Layer: 5
   m_Name: PnlItem (1)
   m_TagString: Untagged
@@ -3111,6 +3111,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1424170557310003474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424170557310003473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e5b804311f487f4ba5127604527aaec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Item: 1
+  Data: {fileID: 11400000, guid: e4383bf489a991a4bb8f3d06c785d6f6, type: 2}
 --- !u!114 &1424170557310003476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3154,7 +3168,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1424170557310003477}
+      - m_Target: {fileID: 1424170557310003474}
         m_MethodName: BtnSlot_Handler
         m_Mode: 1
         m_Arguments:
@@ -3165,18 +3179,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1424170557310003477
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1424170557310003473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 019e5e7b810a479469f7116fa7ef3f4a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!222 &1424170557310003478
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3487,6 +3489,7 @@ GameObject:
   - component: {fileID: 1424170557318655829}
   - component: {fileID: 1424170557318655835}
   - component: {fileID: 1424170557318655828}
+  - component: {fileID: 1424170557318655831}
   - component: {fileID: 1424170557318655834}
   m_Layer: 5
   m_Name: PnlItem (7)
@@ -3495,6 +3498,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1424170557318655831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424170557318655830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e5b804311f487f4ba5127604527aaec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Item: 0
+  Data: {fileID: 0}
 --- !u!114 &1424170557318655834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4558,7 +4575,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1424170558214956963}
         m_MethodName: BtnCheckFurnace_Handler
         m_Mode: 3
         m_Arguments:
@@ -8016,7 +8033,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1424170558214956963}
         m_MethodName: BtnCheckRestore_Handler
         m_Mode: 3
         m_Arguments:
@@ -8805,7 +8822,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1424170558214956963}
         m_MethodName: BtnCheckFurnace_Handler
         m_Mode: 3
         m_Arguments:
@@ -8886,6 +8903,7 @@ GameObject:
   - component: {fileID: 1424170557778558390}
   - component: {fileID: 1424170557778558388}
   - component: {fileID: 1424170557778558389}
+  - component: {fileID: 1424170557778558392}
   - component: {fileID: 1424170557778558395}
   m_Layer: 5
   m_Name: PnlItem (8)
@@ -8894,6 +8912,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1424170557778558392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424170557778558391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e5b804311f487f4ba5127604527aaec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Item: 0
+  Data: {fileID: 0}
 --- !u!114 &1424170557778558395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9627,7 +9659,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1424170558214956963}
         m_MethodName: BtnLibrary_Handler
         m_Mode: 1
         m_Arguments:
@@ -10907,7 +10939,7 @@ MonoBehaviour:
   m_text: x0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 55cb23648c395be4da8cf319b3c5971b, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -11749,6 +11781,7 @@ GameObject:
   - component: {fileID: 1424170558005366537}
   - component: {fileID: 1424170558005366543}
   - component: {fileID: 1424170558005366536}
+  - component: {fileID: 1424170558005366539}
   - component: {fileID: 1424170558005366542}
   m_Layer: 5
   m_Name: PnlItem (6)
@@ -11757,6 +11790,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1424170558005366539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424170558005366538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e5b804311f487f4ba5127604527aaec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Item: 0
+  Data: {fileID: 0}
 --- !u!114 &1424170558005366542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13590,7 +13637,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1424170558214956963}
         m_MethodName: BtnHome_Handler
         m_Mode: 1
         m_Arguments:
@@ -13652,6 +13699,7 @@ GameObject:
   - component: {fileID: 1424170558214956967}
   - component: {fileID: 1424170558214956960}
   - component: {fileID: 1424170558214956961}
+  - component: {fileID: 1424170558214956963}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -13659,6 +13707,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1424170558214956963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424170558214956962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5baa9b712953747449c38c327cbd4700, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 822988071749193958}
+  MainCamera: {fileID: 772713800}
+  SubCamera: {fileID: 3688170538930118895}
+  Data: {fileID: 11400000, guid: e4383bf489a991a4bb8f3d06c785d6f6, type: 2}
 --- !u!224 &1424170558214956966
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14212,7 +14276,7 @@ MonoBehaviour:
   m_text: INVENTORY
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 55cb23648c395be4da8cf319b3c5971b, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -14828,6 +14892,7 @@ GameObject:
   - component: {fileID: 1424170558283727601}
   - component: {fileID: 1424170558283727607}
   - component: {fileID: 1424170558283727600}
+  - component: {fileID: 1424170558283727603}
   - component: {fileID: 1424170558283727606}
   m_Layer: 5
   m_Name: PnlItem (5)
@@ -14836,6 +14901,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1424170558283727603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424170558283727602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e5b804311f487f4ba5127604527aaec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Item: 0
+  Data: {fileID: 0}
 --- !u!114 &1424170558283727606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14878,7 +14957,7 @@ MonoBehaviour:
   m_text: STOCK
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 55cb23648c395be4da8cf319b3c5971b, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -15446,7 +15525,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1424170558214956963}
         m_MethodName: BtnCheckRestore_Handler
         m_Mode: 3
         m_Arguments:
@@ -18274,7 +18353,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1424170558214956963}
         m_MethodName: BtnCraft_Handler
         m_Mode: 1
         m_Arguments:
@@ -18656,7 +18735,7 @@ MonoBehaviour:
   m_text: x0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 55cb23648c395be4da8cf319b3c5971b, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -19458,6 +19537,7 @@ GameObject:
   - component: {fileID: 1424170558557683425}
   - component: {fileID: 1424170558557683431}
   - component: {fileID: 1424170558557683424}
+  - component: {fileID: 1424170558557683427}
   - component: {fileID: 1424170558557683430}
   m_Layer: 5
   m_Name: PnlItem (4)
@@ -19466,6 +19546,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1424170558557683427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424170558557683426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e5b804311f487f4ba5127604527aaec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Item: 0
+  Data: {fileID: 0}
 --- !u!114 &1424170558557683430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19749,7 +19843,7 @@ MonoBehaviour:
   m_text: Magic powder
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 55cb23648c395be4da8cf319b3c5971b, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -20280,6 +20374,7 @@ GameObject:
   - component: {fileID: 1424170558639598562}
   - component: {fileID: 1424170558639598560}
   - component: {fileID: 1424170558639598561}
+  - component: {fileID: 1424170558639598564}
   m_Layer: 5
   m_Name: PnlItem (12)
   m_TagString: Untagged
@@ -20287,6 +20382,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1424170558639598564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424170558639598563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e5b804311f487f4ba5127604527aaec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Item: 0
+  Data: {fileID: 0}
 --- !u!1 &1424170558653540788
 GameObject:
   m_ObjectHideFlags: 0
@@ -20569,6 +20678,7 @@ GameObject:
   - component: {fileID: 1424170558659067542}
   - component: {fileID: 1424170558659067540}
   - component: {fileID: 1424170558659067541}
+  - component: {fileID: 1424170558659067544}
   - component: {fileID: 1424170558659067547}
   m_Layer: 5
   m_Name: PnlItem (3)
@@ -20577,6 +20687,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1424170558659067544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424170558659067543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e5b804311f487f4ba5127604527aaec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Item: 0
+  Data: {fileID: 0}
 --- !u!114 &1424170558659067547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20762,7 +20886,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1424170558214956963}
         m_MethodName: BtnCheckFurnace_Handler
         m_Mode: 3
         m_Arguments:
@@ -21828,7 +21952,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1424170558214956963}
         m_MethodName: BtnInventory_Handler
         m_Mode: 1
         m_Arguments:
@@ -21908,7 +22032,7 @@ MonoBehaviour:
   m_text: 'Item : '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 55cb23648c395be4da8cf319b3c5971b, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -22174,7 +22298,7 @@ MonoBehaviour:
   m_text: x0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 55cb23648c395be4da8cf319b3c5971b, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -22658,7 +22782,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1424170558214956963}
         m_MethodName: BtnBench_Handler
         m_Mode: 1
         m_Arguments:
@@ -23283,7 +23407,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1424170558214956963}
         m_MethodName: BtnCheckCraft_Handler
         m_Mode: 3
         m_Arguments:
@@ -23439,7 +23563,7 @@ MonoBehaviour:
   m_text: Magic powder
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 55cb23648c395be4da8cf319b3c5971b, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -23591,7 +23715,7 @@ MonoBehaviour:
   m_text: Jumlah material yang akan diproses atau ditukar tidak cukup!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 043f1349767a2154c98d554ebe64a728, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -23765,6 +23889,7 @@ GameObject:
   - component: {fileID: 1424170558821817100}
   - component: {fileID: 1424170558821817106}
   - component: {fileID: 1424170558821817107}
+  - component: {fileID: 1424170558821817102}
   - component: {fileID: 1424170558821817105}
   m_Layer: 5
   m_Name: PnlItem (9)
@@ -23773,6 +23898,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1424170558821817102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424170558821817101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e5b804311f487f4ba5127604527aaec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Item: 0
+  Data: {fileID: 0}
 --- !u!114 &1424170558821817105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24404,7 +24543,7 @@ MonoBehaviour:
   m_text: x0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 55cb23648c395be4da8cf319b3c5971b, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -24665,7 +24804,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1424170558214956963}
         m_MethodName: BtnStats_Handler
         m_Mode: 1
         m_Arguments:
@@ -25059,7 +25198,7 @@ MonoBehaviour:
   m_text: x0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 55cb23648c395be4da8cf319b3c5971b, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -25609,7 +25748,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1424170558214956963}
         m_MethodName: BtnFurnace_Handler
         m_Mode: 1
         m_Arguments:
@@ -25832,7 +25971,7 @@ MonoBehaviour:
   m_text: x0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 55cb23648c395be4da8cf319b3c5971b, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -26210,7 +26349,7 @@ MonoBehaviour:
   m_text: STORAGE
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 55cb23648c395be4da8cf319b3c5971b, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -26956,6 +27095,7 @@ GameObject:
   - component: {fileID: 1424170559012529908}
   - component: {fileID: 1424170559012529914}
   - component: {fileID: 1424170559012529915}
+  - component: {fileID: 1424170559012529910}
   m_Layer: 5
   m_Name: PnlItem (11)
   m_TagString: Untagged
@@ -26963,6 +27103,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1424170559012529910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424170559012529909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e5b804311f487f4ba5127604527aaec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Item: 0
+  Data: {fileID: 0}
 --- !u!222 &1424170559012529914
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -28046,7 +28200,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1424170558214956963}
         m_MethodName: BtnCheckRestore_Handler
         m_Mode: 3
         m_Arguments:
@@ -28470,7 +28624,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1424170558214956963}
         m_MethodName: BtnStock_Handler
         m_Mode: 1
         m_Arguments:
@@ -28524,7 +28678,7 @@ MonoBehaviour:
   m_text: x0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 55cb23648c395be4da8cf319b3c5971b, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -28754,7 +28908,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1424170558214956963}
         m_MethodName: BtnCheckCraft_Handler
         m_Mode: 3
         m_Arguments:
@@ -28994,7 +29148,7 @@ MonoBehaviour:
   m_text: x0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 55cb23648c395be4da8cf319b3c5971b, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -29401,7 +29555,7 @@ MonoBehaviour:
   m_text: x0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 55cb23648c395be4da8cf319b3c5971b, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -30591,7 +30745,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1424170558214956963}
         m_MethodName: BtnRestore_Handler
         m_Mode: 1
         m_Arguments:
@@ -30992,7 +31146,7 @@ MonoBehaviour:
   m_text: x0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 55cb23648c395be4da8cf319b3c5971b, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -31318,7 +31472,7 @@ MonoBehaviour:
   m_text: CLOSE
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 55cb23648c395be4da8cf319b3c5971b, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -31665,7 +31819,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1424170558214956963}
         m_MethodName: BtnGoTo_Handler
         m_Mode: 1
         m_Arguments:
@@ -31735,7 +31889,7 @@ GameObject:
   - component: {fileID: 1424170559227032191}
   - component: {fileID: 1424170559227032189}
   - component: {fileID: 1424170559227032190}
-  - component: {fileID: 1424170559227032188}
+  - component: {fileID: 1424170559227032185}
   m_Layer: 5
   m_Name: PnlItem (2)
   m_TagString: Untagged
@@ -31743,7 +31897,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1424170559227032188
+--- !u!114 &1424170559227032185
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -31752,9 +31906,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1424170559227032184}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 019e5e7b810a479469f7116fa7ef3f4a, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e5b804311f487f4ba5127604527aaec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Item: 2
+  Data: {fileID: 0}
 --- !u!222 &1424170559227032189
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -32362,6 +32518,7 @@ GameObject:
   - component: {fileID: 1424170559273882007}
   - component: {fileID: 1424170559273882005}
   - component: {fileID: 1424170559273882006}
+  - component: {fileID: 1424170559273882001}
   - component: {fileID: 1424170559273882004}
   m_Layer: 5
   m_Name: PnlItem (10)
@@ -32370,6 +32527,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1424170559273882001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424170559273882000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e5b804311f487f4ba5127604527aaec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Item: 0
+  Data: {fileID: 0}
 --- !u!114 &1424170559273882004
 MonoBehaviour:
   m_ObjectHideFlags: 0
