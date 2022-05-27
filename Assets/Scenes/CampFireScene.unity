@@ -13699,6 +13699,7 @@ GameObject:
   - component: {fileID: 1424170558214956967}
   - component: {fileID: 1424170558214956960}
   - component: {fileID: 1424170558214956961}
+  - component: {fileID: 1424170558214956964}
   - component: {fileID: 1424170558214956963}
   m_Layer: 5
   m_Name: Canvas
@@ -13717,6 +13718,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5baa9b712953747449c38c327cbd4700, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 822988071749193958}
+  MainCamera: {fileID: 772713800}
+  SubCamera: {fileID: 3688170538930118895}
+  Data: {fileID: 11400000, guid: e4383bf489a991a4bb8f3d06c785d6f6, type: 2}
+--- !u!114 &1424170558214956964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424170558214956962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 900e964b1efe330449f4fa88b41412c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 822988071749193958}
