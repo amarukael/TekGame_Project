@@ -41,9 +41,9 @@ public class Gui_LastStand : GUI_Active
         BarMp = transform.Find("BarMp").GetComponent<Slider>();
         BarSp = transform.Find("BarSp").GetComponent<Slider>();
 
-        //input.GamePlay.Map.performed += (e) => {
-        //    BtnMap_Handler();
-        //};
+        input.GamePlay.Map.performed += (e) => {
+            BtnMap_Handler();
+        };
 
         player = Player.GetComponent<PlayerActive>();
         isMap = false;

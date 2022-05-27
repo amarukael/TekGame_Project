@@ -15,50 +15,41 @@ public class GameManager : MonoBehaviour
     public GameObject Origin_Damage => Resources.Load<GameObject>("Prefabs/Stuffs/DamagePop");
     public GameObject Origin_Elixir => Resources.Load<GameObject>("Prefabs/PowerUps/Item_Elixir");
     public GameObject Origin_Scroll => Resources.Load<GameObject>("Prefabs/PowerUps/Item_Scroll");
+    //public GameObject Origin_Lumber => Resources.Load<GameObject>("Prefabs/PowerUps/Item_Lumber");
+    //public GameObject Origin_CrudeOil => Resources.Load<GameObject>("Prefabs/PowerUps/Item_CrudeOil");
     public GameObject Origin_Green => Resources.Load<GameObject>("Prefabs/PowerUps/Power_Green");
     public GameObject Origin_Red => Resources.Load<GameObject>("Prefabs/PowerUps/Power_Red");
     public GameObject Origin_Blue => Resources.Load<GameObject>("Prefabs/PowerUps/Power_Blue");
 
-    public LevelSet LevelPoint;
-    public int GamePoint;
-    public int KillPoint;
-
-    public int Item_Elixir
-    {
-        get
-        {
-            return itemElixir;
-        }
-        set
-        {
-            itemElixir = value;
-            if (itemElixir > 99)
-            {
-                itemElixir = 99;
-            }
-        }
-    }
-
-    public int Item_Scroll
-    {
-        get
-        {
-            return itemScroll;
-        }
-        set
-        {
-            itemScroll = value;
-            if (itemScroll > 99)
-            {
-                itemScroll = 99;
-            }
-        }
-    }
+    public GameData Data;
 
     public static GameManager Instance { get; private set; }
 
-    [SerializeField] private int itemElixir;
-    [SerializeField] private int itemScroll;
+    public ItemCollection ItemGenerate(ItemSet ItemId)
+    {
+        switch (ItemId)
+        {
+            case ItemSet.GreenOre: return Data.Item_GreenOre;
+            case ItemSet.RedStone: return Data.Item_RedStone;
+            case ItemSet.BlueCrystal: return Data.Item_BlueCrystal;
+            case ItemSet.Lumber: return Data.Item_Lumber;
+            case ItemSet.CrudeOil: return Data.Item_CrudeOil;
+            case ItemSet.MagicCoal: return Data.Item_MagicCoal;
+            case ItemSet.MagicPowder: return Data.Item_MagicPowder;
+            case ItemSet.GoldBar: return Data.Item_GoldBar;
+            case ItemSet.Elixir: return Data.Item_Elixir;
+            case ItemSet.Scroll: return Data.Item_Scroll;
+        }
+        return null;
+    }
+
+    public Vector3 RandomPosition(Vector3 basepos)
+    {
+        float x = UnityEngine.Random.Range(-1f, 1f);
+        float y = UnityEngine.Random.Range(-1f, 1f);
+        var rand = basepos + new Vector3(x, y);
+        return rand;
+    }
 
     private void Start()
     {
@@ -75,7 +66,6 @@ public class ItemCollection
     public string Name;
     public string Description;
     public int Amount;
-    public bool IsStack;
 
     public int Stock
     {
@@ -142,5 +132,5 @@ public enum ItemSet
 
 public enum LevelSet
 {
-    Default, Easy, Normal, Hard,
+    Demo, Easy, Normal, Hard,
 }

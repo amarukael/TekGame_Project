@@ -30,7 +30,7 @@ public class EnemyActive : MonoBehaviour
             enemyAnim.SetTrigger("Attacking");
             if (Creep == EnemySet.Witch)
             {
-                var location = RandomPosition(transform.position);
+                var location = gm.RandomPosition(transform.position);
                 var vfx = Instantiate(gm.Origin_CastLight, location + new Vector3(0f, -0.56f, 0f), Quaternion.identity);
                 Instantiate(gm.Origin_SkeltCreep, location, Quaternion.identity);
                 Destroy(vfx, 1f);
@@ -40,90 +40,6 @@ public class EnemyActive : MonoBehaviour
                 enemyAudio.Play();
             }
             attackTime = AtkSpeed;
-        }
-    }
-
-    private void OnDisable()
-    {
-        if (!gameObject.scene.isLoaded) return;
-        var gm = GameManager.Instance;
-        switch (Creep)
-        {
-            case EnemySet.Damaged:
-                var vfx_fire1 = Instantiate(gm.Origin_Fire1, transform.position, Quaternion.identity);
-                Destroy(vfx_fire1, 1f);
-                gm.KillPoint++;
-                break;
-            case EnemySet.Native:
-                creep = gm.Origin_DamagedCreep;
-                creep.GetComponent<EnemyActive>().Spawner = Spawner;
-                creep.GetComponent<EnemyActive>().SlotNum = SlotNum;
-                generator = Spawner.GetComponent<GenerateActive>();
-                generator.Creeps[SlotNum] = Instantiate(creep, transform.position, Quaternion.identity, Spawner.transform);
-
-                Instantiate(gm.Origin_Green, RandomPosition(transform.position), Quaternion.identity);
-                if (UnityEngine.Random.Range(1, 10) <= 5)
-                {
-                    Instantiate(gm.Origin_Elixir, RandomPosition(transform.position), Quaternion.identity);
-                }
-                gm.GamePoint += 5;
-                break;
-            case EnemySet.Warrior:
-                creep = gm.Origin_NativeCreep;
-                creep.GetComponent<EnemyActive>().Spawner = Spawner;
-                creep.GetComponent<EnemyActive>().SlotNum = SlotNum;
-                generator = Spawner.GetComponent<GenerateActive>();
-                generator.Creeps[SlotNum] = Instantiate(creep, transform.position, Quaternion.identity, Spawner.transform);
-
-                Instantiate(gm.Origin_Green, RandomPosition(transform.position), Quaternion.identity);
-                Instantiate(gm.Origin_Green, RandomPosition(transform.position), Quaternion.identity);
-                Instantiate(gm.Origin_Green, RandomPosition(transform.position), Quaternion.identity);
-                Instantiate(gm.Origin_Red, RandomPosition(transform.position), Quaternion.identity);
-                Instantiate(gm.Origin_Red, RandomPosition(transform.position), Quaternion.identity);
-                Instantiate(gm.Origin_Elixir, RandomPosition(transform.position), Quaternion.identity);
-                Instantiate(gm.Origin_Elixir, RandomPosition(transform.position), Quaternion.identity);
-                if (UnityEngine.Random.Range(1, 10) <= 5)
-                {
-                    Instantiate(gm.Origin_Scroll, RandomPosition(transform.position), Quaternion.identity);
-                }
-                gm.GamePoint += 30;
-                break;
-            case EnemySet.Witch:
-                creep = gm.Origin_DamagedCreep;
-                creep.GetComponent<EnemyActive>().Spawner = Spawner;
-                creep.GetComponent<EnemyActive>().SlotNum = SlotNum;
-                generator = Spawner.GetComponent<GenerateActive>();
-                generator.Creeps[SlotNum] = Instantiate(creep, transform.position, Quaternion.identity, Spawner.transform);
-
-                Instantiate(gm.Origin_Blue, RandomPosition(transform.position), Quaternion.identity);
-                Instantiate(gm.Origin_Blue, RandomPosition(transform.position), Quaternion.identity);
-                Instantiate(gm.Origin_Blue, RandomPosition(transform.position), Quaternion.identity);
-                Instantiate(gm.Origin_Scroll, RandomPosition(transform.position), Quaternion.identity);
-                Instantiate(gm.Origin_Scroll, RandomPosition(transform.position), Quaternion.identity);
-                gm.GamePoint += 15;
-                break;
-            case EnemySet.Skeleton:
-                var vfx_fire2 = Instantiate(gm.Origin_Fire2, transform.position, Quaternion.identity);
-                Destroy(vfx_fire2, 1f);
-                Instantiate(gm.Origin_Elixir, RandomPosition(transform.position), Quaternion.identity);
-                if (UnityEngine.Random.Range(1, 10) <= 2)
-                {
-                    Instantiate(gm.Origin_Scroll, RandomPosition(transform.position), Quaternion.identity);
-                }
-                if (UnityEngine.Random.Range(1, 10) <= 5)
-                {
-                    Instantiate(gm.Origin_Green, RandomPosition(transform.position), Quaternion.identity);
-                }
-                if (UnityEngine.Random.Range(1, 10) <= 2)
-                {
-                    Instantiate(gm.Origin_Red, RandomPosition(transform.position), Quaternion.identity);
-                }
-                if (UnityEngine.Random.Range(1, 10) <= 2)
-                {
-                    Instantiate(gm.Origin_Blue, RandomPosition(transform.position), Quaternion.identity);
-                }
-                gm.GamePoint += 5;
-                break;
         }
     }
 
@@ -191,13 +107,82 @@ public class EnemyActive : MonoBehaviour
         enemyAnim.SetFloat("AxisY", vector.y);
     }
 
-    private Vector3 RandomPosition(Vector3 basepos)
+    private void OnDisable()
     {
-        float x = UnityEngine.Random.Range(-1f, 1f);
-        float y = UnityEngine.Random.Range(-1f, 1f);
-        var rand = basepos + new Vector3(x, y);
-        return rand;
+        if (!gameObject.scene.isLoaded) return;
+        var gm = GameManager.Instance;
+        switch (Creep)
+        {
+            case EnemySet.Damaged:
+                var vfx_fire1 = Instantiate(gm.Origin_Fire1, transform.position, Quaternion.identity);
+                Destroy(vfx_fire1, 1f);
+                gm.Data.KillPoint++;
+                break;
+            case EnemySet.Native:
+                creep = gm.Origin_DamagedCreep;
+                creep.GetComponent<EnemyActive>().Spawner = Spawner;
+                creep.GetComponent<EnemyActive>().SlotNum = SlotNum;
+                generator = Spawner.GetComponent<GenerateActive>();
+                generator.Creeps[SlotNum] = Instantiate(creep, transform.position, Quaternion.identity, Spawner.transform);
+
+                Instantiate(gm.Origin_Green, gm.RandomPosition(transform.position), Quaternion.identity);
+                gm.Data.GamePoint += 5;
+                break;
+            case EnemySet.Warrior:
+                creep = gm.Origin_NativeCreep;
+                creep.GetComponent<EnemyActive>().Spawner = Spawner;
+                creep.GetComponent<EnemyActive>().SlotNum = SlotNum;
+                generator = Spawner.GetComponent<GenerateActive>();
+                generator.Creeps[SlotNum] = Instantiate(creep, transform.position, Quaternion.identity, Spawner.transform);
+
+                Instantiate(gm.Origin_Green, gm.RandomPosition(transform.position), Quaternion.identity);
+                Instantiate(gm.Origin_Green, gm.RandomPosition(transform.position), Quaternion.identity);
+                Instantiate(gm.Origin_Green, gm.RandomPosition(transform.position), Quaternion.identity);
+                Instantiate(gm.Origin_Red, gm.RandomPosition(transform.position), Quaternion.identity);
+                Instantiate(gm.Origin_Red, gm.RandomPosition(transform.position), Quaternion.identity);
+                if (UnityEngine.Random.Range(1, 10) <= 5)
+                {
+                    Instantiate(gm.Origin_Elixir, gm.RandomPosition(transform.position), Quaternion.identity);
+                }
+                gm.Data.GamePoint += 30;
+                break;
+            case EnemySet.Witch:
+                creep = gm.Origin_DamagedCreep;
+                creep.GetComponent<EnemyActive>().Spawner = Spawner;
+                creep.GetComponent<EnemyActive>().SlotNum = SlotNum;
+                generator = Spawner.GetComponent<GenerateActive>();
+                generator.Creeps[SlotNum] = Instantiate(creep, transform.position, Quaternion.identity, Spawner.transform);
+
+                Instantiate(gm.Origin_Blue, gm.RandomPosition(transform.position), Quaternion.identity);
+                Instantiate(gm.Origin_Blue, gm.RandomPosition(transform.position), Quaternion.identity);
+                Instantiate(gm.Origin_Blue, gm.RandomPosition(transform.position), Quaternion.identity);
+                Instantiate(gm.Origin_Scroll, gm.RandomPosition(transform.position), Quaternion.identity);
+                gm.Data.GamePoint += 15;
+                break;
+            case EnemySet.Skeleton:
+                var vfx_fire2 = Instantiate(gm.Origin_Fire2, transform.position, Quaternion.identity);
+                Destroy(vfx_fire2, 1f);
+                if (UnityEngine.Random.Range(1, 10) <= 2)
+                {
+                    Instantiate(gm.Origin_Elixir, gm.RandomPosition(transform.position), Quaternion.identity);
+                }
+                if (UnityEngine.Random.Range(1, 10) <= 5)
+                {
+                    Instantiate(gm.Origin_Green, gm.RandomPosition(transform.position), Quaternion.identity);
+                }
+                if (UnityEngine.Random.Range(1, 10) <= 2)
+                {
+                    Instantiate(gm.Origin_Red, gm.RandomPosition(transform.position), Quaternion.identity);
+                }
+                if (UnityEngine.Random.Range(1, 10) <= 2)
+                {
+                    Instantiate(gm.Origin_Blue, gm.RandomPosition(transform.position), Quaternion.identity);
+                }
+                gm.Data.GamePoint += 5;
+                break;
+        }
     }
+
     private void Awake()
     {
         enemyAnim = GetComponent<Animator>();

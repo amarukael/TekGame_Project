@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/CampFireScene.unity
+    guid: 21561886f128a904a96084eef7cb6aa8
+  - enabled: 1
+    path: Assets/Scenes/LastStandScene.unity
+    guid: 1719c52f315d69c4292a51184528af27
+  - enabled: 1
+    path: Assets/Scenes/GameMenuScene.unity
+    guid: 481736352bd598f46ada9ec18089a705
   m_configObjects: {}
