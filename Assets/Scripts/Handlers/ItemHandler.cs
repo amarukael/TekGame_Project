@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ItemHandler : MonoBehaviour
 {
@@ -12,26 +10,23 @@ public class ItemHandler : MonoBehaviour
         if (collision.CompareTag("Player") && collision.isTrigger)
         {
             var player = collision.GetComponent<PlayerActive>();
-            switch (Item) {
+            switch (Item)
+            {
                 case ItemSet.GreenOre:
-                    player.HealthPoint.CurrentStock += 10;
+                    gm.Data.HealthPoint.CurrentStock += 10;
                     DamageActive.PopupDamage(gm.Origin_Damage,
                                              transform.position, 10,
                                              DamageState.AllyHeal);
                     break;
                 case ItemSet.RedStone:
-                    player.StaminaPoint.CurrentStock += 20;
+                    gm.Data.StaminaPoint.CurrentStock += 20;
                     break;
                 case ItemSet.BlueCrystal:
-                    player.MagicPoint.CurrentStock += 50;
-                    break;
-                case ItemSet.Elixir:
-                    gm.Item_Elixir++;
-                    break;
-                case ItemSet.Scroll:
-                    gm.Item_Scroll++;
+                    gm.Data.MagicPoint.CurrentStock += 50;
                     break;
             }
+            var item = gm.ItemGenerate(Item);
+            item.Stock++;
             Destroy(gameObject);
         }
     }

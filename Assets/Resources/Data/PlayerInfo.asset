@@ -13,76 +13,66 @@ MonoBehaviour:
   m_Name: PlayerInfo
   m_EditorClassIdentifier: 
   HealthPoint:
-    CurrentPoint: 0
-    MaximumPoint: 0
+    CurrentPoint: 500
+    MaximumPoint: 500
   MagicPoint:
-    CurrentPoint: 0
-    MaximumPoint: 0
+    CurrentPoint: 200
+    MaximumPoint: 200
   StaminaPoint:
-    CurrentPoint: 0
-    MaximumPoint: 0
-  MoveSpeed: 0
-  AtkSpeed: 0
+    CurrentPoint: 200
+    MaximumPoint: 200
+  MoveSpeed: 5
+  AtkSpeed: 0.5
   LevelPoint: 0
   KillPoint: 0
-  GamePoint: 0
+  GamePoint: 1000
   Item_GreenOre:
     Uid: 1
     Name: Green Ore
     Description: Material from creep
-    Amount: 30
-    IsStack: 0
+    Amount: 20
   Item_RedStone:
     Uid: 2
     Name: Red Stone
     Description: Material from elite creep
-    Amount: 30
-    IsStack: 0
+    Amount: 20
   Item_BlueCrystal:
     Uid: 3
     Name: Blue Crystal
     Description: Material from magic creep
-    Amount: 30
-    IsStack: 0
+    Amount: 10
   Item_GoldBar:
     Uid: 8
-    Name: Gold bar
+    Name: Gold Bar
     Description: Expensive alloy made from coin
-    Amount: 30
-    IsStack: 0
+    Amount: 10
   Item_Lumber:
     Uid: 4
     Name: Lumber
     Description: Raw material for crafting
-    Amount: 30
-    IsStack: 0
+    Amount: 10
   Item_CrudeOil:
-    Uid: 5
+    Uid: 0
     Name: Crude Oil
     Description: Raw material for crafting
-    Amount: 30
-    IsStack: 0
+    Amount: 10
   Item_MagicCoal:
-    Uid: 6
+    Uid: 0
     Name: Magic Coal
     Description: Magic material for crafting
-    Amount: 30
-    IsStack: 0
+    Amount: 10
   Item_MagicPowder:
     Uid: 7
     Name: Magic Powder
     Description: Magic material for crafting
-    Amount: 30
-    IsStack: 0
+    Amount: 10
   Item_Elixir:
-    Uid: 9
+    Uid: 0
     Name: Elixir of Life
     Description: Can restore 100 pts HP
-    Amount: 30
-    IsStack: 0
+    Amount: 10
   Item_Scroll:
-    Uid: 10
+    Uid: 0
     Name: Scroll of Guard
     Description: Can prevent any damage from creep
-    Amount: 30
-    IsStack: 0
+    Amount: 10

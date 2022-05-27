@@ -5,7 +5,7 @@ public class HitHandler : MonoBehaviour
     public float AttackPoint;
     public bool HitArea;
 
-    private int count;
+    //private int count;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -24,20 +24,19 @@ public class HitHandler : MonoBehaviour
             }
             else
             {
-                if (count == 0)
-                {
-                    enemy.HealthPoint -= AttackPoint;
-                    DamageActive.PopupDamage(gm.Origin_Damage,
+                //if (count == 0) {
+                enemy.HealthPoint -= AttackPoint;
+                DamageActive.PopupDamage(gm.Origin_Damage,
                                          position,
                                          AttackPoint,
                                          DamageState.PlayerPhs);
-                    var player = transform.parent.GetComponent<PlayerActive>();
-                    if (player)
-                    {
-                        player.StaminaPoint.CurrentStock += 10;
-                    }
+                var player = transform.parent.GetComponent<PlayerActive>();
+                if (player)
+                {
+                    GameManager.Instance.Data.StaminaPoint.CurrentStock += 10;
                 }
-                count++;
+                //}
+                //count++;
             }
         }
         else if (collision.CompareTag("Player") && collision.isTrigger)
@@ -45,11 +44,11 @@ public class HitHandler : MonoBehaviour
             var player = collision.GetComponent<PlayerActive>();
             if (!player.IsGuard)
             {
-                player.HealthPoint.CurrentStock -= AttackPoint;
+                GameManager.Instance.Data.HealthPoint.CurrentStock -= AttackPoint;
                 DamageActive.PopupDamage(gm.Origin_Damage,
-                             position,
-                             AttackPoint,
-                             DamageState.EnemyPhs);
+                                         position,
+                                         AttackPoint,
+                                         DamageState.EnemyPhs);
             }
             else
             {
@@ -59,8 +58,7 @@ public class HitHandler : MonoBehaviour
         }
     }
 
-    private void OnDisable() {
-        count = 0;
-    }
-
+    //private void OnDisable() {
+    //    count = 0;
+    //}
 }

@@ -87,7 +87,7 @@ public class StageActive : MonoBehaviour
                             Action<Transform, string> action,
                             params int[] stock)
     {
-        manager.LevelPoint = level;
+        manager.Data.LevelPoint = level;
         foreach (var nest in NestSpawner)
         {
             var generator = nest.GetComponent<GenerateActive>();
@@ -111,16 +111,16 @@ public class StageActive : MonoBehaviour
             manager = GameManager.Instance;
         }
 
-        var level = manager.LevelPoint;
-        if (manager.KillPoint > 99 && level != LevelSet.Hard)
+        var level = manager.Data.LevelPoint;
+        if (manager.Data.KillPoint > 99 && level != LevelSet.Hard)
         {
             StageSetup(LevelSet.Hard, GeneratorTier_3, 7, 5);
         }
-        else if (manager.KillPoint > 30 && manager.KillPoint <= 99 && level != LevelSet.Normal)
+        else if (manager.Data.KillPoint > 30 && manager.Data.KillPoint <= 99 && level != LevelSet.Normal)
         {
             StageSetup(LevelSet.Normal, GeneratorTier_2, 5, 3);
         }
-        else if (manager.KillPoint <= 30 && level != LevelSet.Easy)
+        else if (manager.Data.KillPoint <= 30 && level != LevelSet.Easy)
         {
             StageSetup(LevelSet.Easy, GeneratorTier_1, 3, 1);
         }

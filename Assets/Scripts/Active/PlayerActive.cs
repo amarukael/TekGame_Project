@@ -43,21 +43,15 @@ public struct UnitPoint
 
 public class PlayerActive : MonoBehaviour
 {
+    public UnitState State;
     public bool IsAlive;
     public bool IsGuard;
-    
-
-    public UnitState State;
-    public float MoveSpeed;
-
     public float[] CooldownSkill;
-    public UnitPoint HealthPoint;
-    public UnitPoint MagicPoint;
-    public UnitPoint StaminaPoint;
-    public float AtkSpeed;
 
+    public GameManager Gm { get; set; }
     public float[] CastTime { get; set; }
 
+    private InputSystem input;
     private Animator playerAnim;
     private AudioSource playerAudio;
     private AudioSource attackAudio;
@@ -72,7 +66,29 @@ public class PlayerActive : MonoBehaviour
             State = UnitState.Attack;
             playerAnim.SetTrigger("Attacking");
             attackAudio.Play();
-            attackTime = AtkSpeed;
+            attackTime = Gm.Data.AtkSpeed;
+        }
+    }
+
+    private IEnumerator Player_Attack(SkillSet skill, Action action = null)
+    {
+        if (CastTime[(int)skill - 1] == 0 && State == UnitState.Idle)
+        {
+            State = UnitState.Cast;
+            playerAnim.SetTrigger(skill.ToString());
+            CastTime[(int)skill - 1] = CooldownSkill[(int)skill - 1];
+            switch (skill)
+            {
+                case SkillSet.SplashSwing:
+                    skill_1Audio.Play();
+                    Gm.Data.StaminaPoint.CurrentPoint -= 20;
+                    break;
+                case SkillSet.DemonShell:
+                    Gm.Data.MagicPoint.CurrentPoint -= 50;
+                    break;
+            }
+            yield return new WaitForSeconds(1f);
+            action?.Invoke();
         }
     }
 
@@ -86,8 +102,8 @@ public class PlayerActive : MonoBehaviour
             directPos = moving;
             var xAndy = Mathf.Sqrt(Mathf.Pow(moving.x, 2) +
                                    Mathf.Pow(moving.y, 2));
-            var pos_x = moving.x * MoveSpeed * Time.fixedDeltaTime / xAndy;
-            var pos_y = moving.y * MoveSpeed * Time.fixedDeltaTime / xAndy;
+            var pos_x = moving.x * Gm.Data.MoveSpeed * Time.fixedDeltaTime / xAndy;
+            var pos_y = moving.y * Gm.Data.MoveSpeed * Time.fixedDeltaTime / xAndy;
             var pos_z = transform.position.z;
             transform.Translate(pos_x, pos_y, pos_z, Space.Self);
             playerAnim.SetBool("IsMoving", true);
@@ -104,104 +120,105 @@ public class PlayerActive : MonoBehaviour
             State = UnitState.Idle;
         }
     }
+
     private void Player_Death()
     {
-        if (HealthPoint.CurrentPoint <= 0)
+        if (Gm.Data.HealthPoint.CurrentPoint <= 0)
         {
             GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
-            IsAlive = false;
-            HealthPoint.CurrentPoint = 0;
             Player_Movement(Vector2.zero);
-            State = UnitState.Dead;
+            Gm.Data.HealthPoint.CurrentPoint = 0;
             playerAnim.SetTrigger("Falling");
+            State = UnitState.Dead;
+            IsAlive = false;
         }
     }
 
-    private IEnumerator Player_Attack(SkillSet skill, Action action = null)
+    private void OnDisable()
     {
-        if (CastTime[(int)skill - 1] == 0 && State == UnitState.Idle)
+        try
         {
-            State = UnitState.Cast;
-            playerAnim.SetTrigger(skill.ToString());
-            CastTime[(int)skill - 1] = CooldownSkill[(int)skill - 1];
-            switch (skill)
-            {
-                case SkillSet.SplashSwing:
-                    skill_1Audio.Play();
-                    StaminaPoint.CurrentPoint -= 20;
-                    break;
-                case SkillSet.DemonShell:
-                    MagicPoint.CurrentPoint -= 50;
-                    break;
-            }
-            yield return new WaitForSeconds(1f);
-            action?.Invoke();
+            input.Disable();
+        }
+        catch
+        {
+            Debug.Log("Error");
         }
     }
-
 
     private void Start()
     {
+        Gm = GameManager.Instance;
+        input = new InputSystem();
+        input.Enable();
+
+        input.GamePlay.AttackAction.performed += (e) => {
+            Player_Attack();
+        };
+
+        input.GamePlay.Skill_1.performed += (e) => {
+            if (Gm.Data.StaminaPoint.CurrentPoint >= 20)
+            {
+                StartCoroutine(Player_Attack(SkillSet.SplashSwing));
+            }
+        };
+
+        input.GamePlay.Skill_2.performed += (e) => {
+
+        };
+
+        input.GamePlay.Item_1.performed += (e) => {
+            if (Gm.Data.Item_Elixir.Amount > 0 && Gm.Data.HealthPoint.CurrentPoint < Gm.Data.HealthPoint.MaximumPoint && CastTime[2] == 0)
+            {
+                var effect = Instantiate(Gm.Origin_CastLight, transform);
+                Destroy(effect, 1f);
+
+                Gm.Data.HealthPoint.CurrentStock += 100;
+                Gm.Data.Item_Elixir -= 1;
+                DamageActive.PopupDamage(Gm.Origin_Damage,
+                                         transform.position, 100,
+                                         DamageState.AllyHeal);
+                if (Gm.Data.HealthPoint.CurrentPoint > Gm.Data.HealthPoint.MaximumPoint)
+                {
+                    Gm.Data.HealthPoint.CurrentPoint = Gm.Data.HealthPoint.MaximumPoint;
+                }
+                CastTime[2] = CooldownSkill[2];
+            }
+        };
+
+        input.GamePlay.Item_2.performed += (e) => {
+            if (Gm.Data.Item_Scroll.Amount > 0 && Gm.Data.MagicPoint.CurrentPoint >= 50)
+            {
+                StartCoroutine(Player_Attack(SkillSet.DemonShell, () => {
+                    var shell = Instantiate(Gm.Origin_Shell, transform);
+                    Gm.Data.Item_Scroll -= 1;
+                    Destroy(shell, 10f);
+                }));
+            }
+        };
+
         playerAnim = GetComponent<Animator>();
         playerAudio = GetComponent<AudioSource>();
-        attackAudio = transform.Find("Knight").GetComponent<AudioSource>();
         skill_1Audio = transform.Find("Abilities")
-                        .Find("SplashSwing")
-                        .GetComponent<AudioSource>();
+                                .Find("SplashSwing")
+                                .GetComponent<AudioSource>();
+        attackAudio = transform.Find("Knight").GetComponent<AudioSource>();
         CastTime = new float[] { 0f, 0f, 0f };
     }
 
     private void FixedUpdate()
     {
+        if (Gm == null)
+        {
+            Gm = GameManager.Instance;
+        }
+
         if (IsAlive)
         {
             var moveaway = Vector2.zero;
-            moveaway.x = Input.GetAxis("Horizontal");
-            moveaway.y = Input.GetAxis("Vertical");
+            moveaway.x = input.GamePlay.Movement.ReadValue<Vector2>().x;
+            moveaway.y = input.GamePlay.Movement.ReadValue<Vector2>().y;
             Player_Movement(moveaway);
-            var gm = GameManager.Instance;
-            if (Input.GetButtonDown("Jump"))
-            {
-                Player_Attack();
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha1))
-            {
-                if (StaminaPoint.CurrentPoint >= 20)
-                {
-                    StartCoroutine(Player_Attack(SkillSet.SplashSwing));
-                }
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                if (gm.Item_Scroll > 0 && MagicPoint.CurrentPoint >= 50)
-                {
-                    StartCoroutine(Player_Attack(SkillSet.DemonShell, () => {
-                        var shell = Instantiate(gm.Origin_Shell, transform);
-                        gm.Item_Scroll--;
-                        Destroy(shell, 10f);
-                    }));
-                }
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha3))
-            {
-                if (gm.Item_Elixir > 0 && HealthPoint.CurrentPoint < HealthPoint.MaximumPoint && CastTime[2] == 0)
-                {
-                    var effect = Instantiate(gm.Origin_CastLight, transform);
-                    Destroy(effect, 1f);
-
-                    HealthPoint.CurrentStock += 100;
-                    gm.Item_Elixir--;
-                    DamageActive.PopupDamage(gm.Origin_Damage,
-                                             transform.position, 100,
-                                             DamageState.AllyHeal);
-                    if (HealthPoint.CurrentPoint > HealthPoint.MaximumPoint)
-                    {
-                        HealthPoint.CurrentPoint = HealthPoint.MaximumPoint;
-                    }
-                    CastTime[2] = CooldownSkill[2];
-                }
-            }
-
             Player_Death();
         }
 
@@ -231,7 +248,5 @@ public class PlayerActive : MonoBehaviour
         }
 
         IsGuard = transform.Find("ShellEffect(Clone)");
-
     }
 }
-
